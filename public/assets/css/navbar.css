@@ -9,7 +9,7 @@
 }
 
 .link:hover {
-    color: rgb(255, 62, 62);
+    color: var(--bs-secondary);
 }
 
 .icon-nav {
