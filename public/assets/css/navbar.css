@@ -1,0 +1,18 @@
+.navbar{
+    font-family: 'Roboto Serif';
+}
+
+.navbar a {
+    text-decoration: none;
+    font-size: var(--font-size);
+    color: var(--bs-light);
+}
+
+.link:hover {
+    color: rgb(255, 62, 62);
+}
+
+.icon-nav {
+    width: 5rem;
+    height: 5rem;
+}
