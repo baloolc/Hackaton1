@@ -38,7 +38,7 @@ function displayGameOver() {
         let text = didWin ? ['Vous avez sauvez la planète'] : ['Vous êtes mort', 'L\'avenir de la planète est foutue'];
         let textOffset = didWin ? 5 : 8;
 
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'red';
         ctx.font = '50px Arial';
         for (let i = 0; i<text.length; i++) {
             ctx.fillText(text[i], canvas.width / textOffset, ((canvas.height / 2) + 53 * i));
