@@ -2,10 +2,10 @@ import Enemy from "/assets/js/Enemy.js";
 import MovingDirection from "/assets/js/MovingDirection.js";
 export default class EnemyController {
   enemyMap = [
-    [0, 3, 1, 1, 1, 1, 2, 1, 1, 3, 1],
-    [1, 1, 1, 2, 0, 2, 1, 2, 1, 1, 1],
-    [3, 3, 3, 1, 1, 1, 2, 1, 0, 1, 1],
-    [1, 2, 1, 1, 3, 1, 1, 0, 1, 3, 1],
+    [1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ];
 
   enemyRows = [];
