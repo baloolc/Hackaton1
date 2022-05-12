@@ -4,7 +4,8 @@
     <header>
         <h1 class="text-center mb-4 mt-2">Web invaders!</h1>
     </header>
-    <main class="container d-flex justify-content-center">
+    <main> 
+    <section class="container d-flex justify-content-center">
         <div class="map mx-auto">
         {% for y in 0..7 %}
         {% for x in 0..19 %}
@@ -12,5 +13,6 @@
         {% endfor %}
         {% endfor %}
         </div>
+        </section>
     </main>
 {% endblock %}
