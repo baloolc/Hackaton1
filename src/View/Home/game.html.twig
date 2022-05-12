@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<header>
+		<h1 class="text-center mb-4 mt-2">Web invaders!</h1>
+	</header>
+	<main>
+		<div class="w-fit mx-auto">
+			<canvas id="game"></canvas>
+		</div>
+		<script type="module" src="/assets/js/index.js"></script>
+	</main>
+{% endblock %}

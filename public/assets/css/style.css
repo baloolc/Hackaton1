@@ -1,22 +1,23 @@
 body {
   height: 100vh;
-  background-image: url("../images/bg-desert.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  line-height: 1.5rem;
-  font-size: 1.2rem;
 }
 
-main {
-  height: 80%;
-  width: 80%;
-  margin: 0;
-  position: absolute;
-  top: 10vh;
-  left: 20vh;
-  background-color: rgba(255, 255, 255, 0.9);
+#game {
+  box-shadow: 10px 5px 5px grey;
 }
 
 .w-fit {
     width: fit-content;
+}
+
+.map {
+  --size: 70px;
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(20, var(--size));
+  grid-template-rows: repeat(8, var(--size));
+}
+
+.map div {
+  border: 1px solid grey;
 }
