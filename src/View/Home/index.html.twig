@@ -1,5 +1,18 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
+    <header>
+        <h1>Web invaders!</h1>
+    </header>
+    <main>
+        <div>
+        </div>
+        <div class="map">
+        {% for y in 0..7 %}
+        {% for x in 0..19 %}
+        <div></div>
+        {% endfor %}
+        {% endfor %}
+        </div>
+    </main>
 {% endblock %}

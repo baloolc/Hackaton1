@@ -17,5 +17,10 @@
         "psr-4": {
             "App\\": "src/"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp": false
+        }
     }
 }
