@@ -2,12 +2,10 @@
 
 {% block content %}
     <header>
-        <h1>Web invaders!</h1>
+        <h1 class="text-center mb-4 mt-2">Web invaders!</h1>
     </header>
-    <main>
-        <div>
-        </div>
-        <div class="map">
+    <main class="container d-flex justify-content-center">
+        <div class="map mx-auto">
         {% for y in 0..7 %}
         {% for x in 0..19 %}
         <div></div>
