@@ -1,11 +1,23 @@
+body {
+  height: 100vh;
+}
+
+#game {
+  box-shadow: 10px 5px 5px grey;
+}
+
+.w-fit {
+    width: fit-content;
+}
+
 .map {
-    --size:70px;
-    display: grid;
-    position: relative;
-    grid-template-columns: repeat(20, var(--size));
-    grid-template-rows: repeat(8, var(--size));
+  --size: 70px;
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(20, var(--size));
+  grid-template-rows: repeat(8, var(--size));
 }
 
 .map div {
-    border:1px solid grey;
+  border: 1px solid grey;
 }
