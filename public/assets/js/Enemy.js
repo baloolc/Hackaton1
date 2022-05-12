@@ -3,7 +3,7 @@ export default class Enemy {
     this.x = x;
     this.y = y;
     this.width = 44;
-    this.height = 32; // Peut etre a changer
+    this.height = 44; // Peut etre a changer
 
     this.image = new Image();
     this.image.src = `/assets/images/enemy${imageNumber}.png`;
@@ -11,5 +11,10 @@ export default class Enemy {
 
   draw(ctx) {
     ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+  }
+
+  move(xVelocity, yVelocity){
+      this.x += xVelocity;
+      this.y += yVelocity;
   }
 }
