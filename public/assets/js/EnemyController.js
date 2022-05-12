@@ -1,3 +1,5 @@
+import Enemy from "/assets/js/Enemy.js";
+import MovingDirection from "/assets/js/MovingDirection.js";
 export default class EnemyController {
 
     enemyMap = [
@@ -9,23 +11,39 @@ export default class EnemyController {
 
     enemyRows = [];
 
+    currentDirection = MovingDirection.right;
+    xVelocity = 0;
+    yVelocity = 0;
+    defaultXVelocity = 1;
+    defaultYVelocity = 1;
+
     constructor(canvas){
         this.canvas = canvas;
         this.createEnemies();
     }
 
-    draw(ctx) {
+    draw(ctx)
+    {
+        this.drawEnemies(ctx);
     }
 
-    createEnemies() {
+    drawEnemies(ctx)
+    {
+        this.enemyRows.flat().forEach((enemy) => {
+            enemy.draw(ctx);
+        });
+    }
+
+    createEnemies()
+    {
         this.enemyMap.forEach((row, rowIndex)=>{
         this.enemyRows[rowIndex] = [];
-        row.forEach((enemyNumber, enemyIndex =>{
+        row.forEach((enemyNumber, enemyIndex) =>{
             if(enemyNumber > 0) {
                 this.enemyRows[rowIndex].push(
                     new Enemy(enemyIndex * 50, rowIndex * 35, enemyNumber))
             }
-        }));
+        });
     });
     }
 }

@@ -1,4 +1,4 @@
-import EnemyController from "./EnemyController.js";
+import EnemyController from "/assets/js/EnemyController.js";
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
@@ -6,7 +6,7 @@ canvas.width = 1000;
 canvas.height = 600;
 
 const background = new Image();
-background.src = "assets/images/Data-Centres-Ireland-1.webp";
+background.src = "/assets/images/Data-Centres-Ireland-1.webp";
 
 const enemyController = new EnemyController(canvas);
 
