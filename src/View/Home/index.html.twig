@@ -1,6 +1,24 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-	<main>
+	<main class="py-5 rounded-3">
+	<h1 class="w-fit mx-auto">Webinator</h1>
+		<section class="w-75 h-75 mx-auto d-flex flex-column justify-content-around p-5">
+			<div>
+				<p>Nous sommmes en l'an 2058. Le web 4.0 et 
+				ses infrastructures ont tellement grossies que l'impacte écologique est tel que les humains ont éssayés de l'arreter.<br>
+				Doté d'une intelligence artificielle, le web ne s'est pas laissé faire.
+				Une grande guerre s'en suivit et presque toute l'humanité a été anéantie.
+				Vous avez réussi à créer une machine à remonter le temps et vous allez voyager dans le passé afin de détruire les sites 
+				internet les plus energivores.</p>
+			</div>
+			<div>
+				<form action="" method="post">
+					<label for="url" class="form-label">Url du site web que vous allez combattre</label>
+					<input type="url" name="url" id="url" class="form-control" placeholder="https://example.com">
+					<button class="btn btn-primary mt-3">Attaquer !</button>
+				</form>
+			</div>
+		</section>
 	</main>
 {% endblock %}
