@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<main class="py-5 rounded-3">
+		<h1 class="w-fit mx-auto">Webinator</h1>
+		<div class="w-fit mx-auto pt-5">
+			<canvas id="game" class="rounded-3"></canvas>
+		</div>
+		<script type="module" src="/assets/js/index.js"></script>
+	</main>
+{% endblock %}

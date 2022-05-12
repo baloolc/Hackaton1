@@ -8,7 +8,7 @@ canvas.width = 1000;
 canvas.height = 600;
 
 const background = new Image();
-background.src = "/assets/images/Data-Centres-Ireland-1.webp";
+background.src = "/assets/images/bg-game.jpeg";
 
 const playerBulletController = new BulletController(canvas, 10, "green");
 const enemyBulletController = new BulletController(canvas, 4, "white");
@@ -35,10 +35,10 @@ function game() {
 
 function displayGameOver() {
     if (isGameOver) {
-        let text = didWin ? ['Vous avez sauvez la planète'] : ['Vous êtes mort', 'L\'avenir de la planète est foutue'];
+        let text = didWin ? ['Vous avez sauvé la planète'] : ['Vous êtes mort', 'L\'avenir de la planète est foutue'];
         let textOffset = didWin ? 5 : 8;
 
-        ctx.fillStyle = 'red';
+        ctx.fillStyle = 'white';
         ctx.font = '50px Arial';
         for (let i = 0; i<text.length; i++) {
             ctx.fillText(text[i], canvas.width / textOffset, ((canvas.height / 2) + 53 * i));
