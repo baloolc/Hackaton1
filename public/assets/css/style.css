@@ -82,6 +82,10 @@ button, button::after {
     outline: transparent;
     position: relative;
   }
+
+  button:hover{
+      color: var(--bs-secondary);
+  }
   
   button::after {
     --slice-0: inset(50% 50% 50% 50%);
