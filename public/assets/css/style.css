@@ -9,3 +9,8 @@
 .map div {
     border:1px solid grey;
 }
+
+.img-article {
+    width: 15rem;
+    height: 15rem;
+}
