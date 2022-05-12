@@ -1,7 +1,6 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-	<main>
 		<section class="container d-flex flex-column align-items-center justify-content-center">
 			<h1 class="title-game text-center mb-4 mt-2" id="webInvaders">Web Invaders</h1>
 			<div class="map mx-auto">
@@ -26,7 +25,7 @@
 		</section>
 		<section>
 			<form action="" methode="POST">
-				<div class="container d-flex flex-column justify-content-center align-items-start mb-4">
+				<div class="container d-flex flex-column justify-content-center align-items-start mb-5">
 				<h2 class="article-title" id="#formulaire">À vous de tester</h2>
 				<div class="">
 				{% for error in errors %}
@@ -46,5 +45,4 @@
 				</div>
 			</form>
 		</section>
-	</main>
 {% endblock %}
