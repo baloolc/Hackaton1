@@ -13,21 +13,55 @@ export default class EnemyController {
   currentDirection = MovingDirection.right;
   xVelocity = 0;
   yVelocity = 0;
-  defaultXVelocity = 1;
-  defaultYVelocity = 1;
+  defaultXVelocity = 2;
+  defaultYVelocity = 2;
   moveDownTimerDefault = 30;
   moveDownTimer = this.moveDownTimerDefault;
+  fireBulletTimerDefault = 100;
+  fireBulletTimer = this.fireBulletTimerDefault;
 
-  constructor(canvas) {
+  constructor(canvas, enemyBulletController, playerBulletController) {
     this.canvas = canvas;
+    this.enemyBulletController = enemyBulletController;
+    this.playerBulletController = playerBulletController;
+
     this.createEnemies();
   }
 
   draw(ctx) {
     this.decrementMoveDownTimer();
     this.updateVelocityAndDirection();
+    this.collisionDetection();
     this.drawEnemies(ctx);
     this.resetMoveDownTimer();
+    this.fireBullet();
+  }
+
+  collisionDetection() {
+    this.enemyRows.forEach((enemyRow) => {
+      enemyRow.forEach((enemy, enemyIndex) => {
+        if (this.playerBulletController.collideWith(enemy)) {
+          enemyRow.splice(enemyIndex, 1);
+        }
+      });
+    });
+
+    this.enemyRows = this.enemyRows.filter((enemyRow) => enemyRow.length > 0);
+  }
+
+  collideWith(sprite) {
+    return this.enemyRows.flat().some((enemy) => enemy.collideWith(sprite));
+  }
+
+  fireBullet() {
+    this.fireBulletTimer--;
+    if (this.fireBulletTimer <= 0) {
+      this.fireBulletTimer = this.fireBulletTimerDefault;
+      const allEnemies = this.enemyRows.flat();
+      const enemyIndex = Math.floor(Math.random() * allEnemies.length);
+      const enemy = allEnemies[enemyIndex];
+      this.enemyBulletController.shoot(enemy.x + enemy.width / 2, enemy.y, -3);
+    }
   }
 
   resetMoveDownTimer() {

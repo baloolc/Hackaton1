@@ -10,6 +10,19 @@ export default class BulletController {
     this.bulletColor = bulletColor;
   }
 
+  collideWith(sprite) {
+    const bulletThatHitSpriteIndex = this.bullets.findIndex((bullet) =>
+      bullet.collideWith(sprite)
+    );
+
+    if (bulletThatHitSpriteIndex >= 0) {
+        this.bullets.splice(bulletThatHitSpriteIndex, 1);
+        return true;
+    }
+
+    return false;
+  }
+
   shoot(x, y, velocity, timeTilNextBullet = 0) {
     if (
       this.timeTilNextBullet <= 0 &&
