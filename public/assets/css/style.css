@@ -1,9 +1,28 @@
+@import url(navbar.css);
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Orbitron:wght@400;500&family=Prompt&family=Roboto+Serif:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700&display=swap');
+@font-face {
+    font-family: 'Erika Ormig';
+    src: url('../images/Erika Ormig.ttf');
+ }
+
+:root {
+    --bs-primary-rgb:15, 15, 19;
+    --bs-primary:#0f0f13;
+    --bs-light-rbg:241, 236, 236;
+    --bs-light:#f1ecec;
+    --font:'Roboto Serif';
+    --font-title:'Erika Ormig';
+    --size:40px;
+    --font-size:24px;
+    --font-size-title:70px;
+    
+}
+
 .map {
-    --size:70px;
     display: grid;
     position: relative;
-    grid-template-columns: repeat(20, var(--size));
-    grid-template-rows: repeat(8, var(--size));
+    grid-template-columns: repeat(20, var(--font-size-title));
+    grid-template-rows: repeat(8, var(--font-size-title));
 }
 
 .map div {
@@ -13,4 +32,14 @@
 .img-article {
     width: 15rem;
     height: 15rem;
+}
+
+.article-title{
+    font-family: var(--font-title);
+    font-size: var(--size);
+}
+
+.title-game {
+    font-family: var(--font-title);
+    font-size: var(--font-size-title);
 }
