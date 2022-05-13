@@ -58,7 +58,7 @@ export default class EnemyController {
         if (this.playerBulletController.collideWith(enemy)) {
           if (this.health === 1) {
             enemyRow.splice(enemyIndex, 1);
-            this.score += this.pointsOnKill
+            this.score += enemy.pointsOnKill
           } else {
             this.health--;
           }
@@ -152,7 +152,7 @@ export default class EnemyController {
       row.forEach((enemyNumber, enemyIndex) => {
         if (enemyNumber > 0) {
           this.enemyRows[rowIndex].push(
-            new Enemy(enemyIndex * 50, rowIndex * 45, enemyNumber)
+            new Enemy(enemyIndex * 50, rowIndex * 45, enemyNumber, this.pointsOnKill)
           );
         }
       });
