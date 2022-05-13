@@ -1,6 +1,4 @@
-
-.footer a img {
-    width: 20vw;
-    height: 12vh;
+.footer p {
+    font-size: var(--font-size-text);
+    font-family: var(--font);
 }
-
