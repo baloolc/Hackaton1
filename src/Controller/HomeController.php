@@ -24,7 +24,9 @@ class HomeController extends AbstractController
                 $url = str_replace(':', '%3A', $url);
                 $url = str_replace('/', '%2F', $url);
                 $client = HttpClient::create();
-                $response = $client->request('GET', self::API_URL . 'site?url=' . $url);
+                $response = $client->request('GET', self::API_URL . 'site?url=' . $url, [
+                    'timeout' => 15,
+                ]);
                 $content = $response->toArray();
                 header('Location: /game?webPower=' . $content['statistics']['co2']['grid']['grams']);
             }
