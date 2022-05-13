@@ -1,157 +1,22 @@
-@import url(navbar.css);
-@import url(footer.css);
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Orbitron:wght@400;500&family=Prompt&family=Roboto+Serif:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700&display=swap');
-@font-face {
-    font-family: 'Erika Ormig';
-    src: url('../images/Erika Ormig.ttf');
- }
-
-:root {
-    --bs-primary-rgb:15, 15, 19;
-    --bs-primary:#0f0f13;
-    --bs-secondary-rgb:255, 62, 62;
-    --bs-secondary:#ff3e3e;
-    --bs-light-rbg:241, 236, 236;
-    --bs-light:#f1ecec;
-    --font:'Roboto Serif';
-    --font-title:'Erika Ormig';
-    --size:40px;
-    --font-size:24px;
-    --font-size-title:70px;
-    --font-size-text:18px;
-    
+body {
+  min-height: 100vh;
+  background-image: url("../images/bg-desert.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  line-height: 1.5rem;
+  font-size: 1.2rem;
 }
 
-.map {
-    display: grid;
-    position: relative;
-    grid-template-columns: repeat(20, var(--font-size-title));
-    grid-template-rows: repeat(8, var(--font-size-title));
+main {
+  min-height: 80vh;
+  width: 80vw;
+  margin: 0;
+  position: absolute;
+  top: 10vh;
+  left: 20vh;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
-.map div {
-    border:1px solid grey;
+.w-fit {
+  width: fit-content;
 }
-
-.img-article {
-    width: 20rem;
-    height: 18.5rem;
-}
-
-.article-title{
-    font-family: var(--font-title);
-    font-size: var(--size);
-}
-
-.title-game {
-    font-family: var(--font-title);
-    font-size: var(--font-size-title);
-}
-
-.article {
-    font-family: var(--font);
-    font-size: var(--font-size-text);
-}
-
-.champ-address{
-    border-radius: 4px;
-    box-shadow: 2px 2px 4px var(--bs-secondary);
-    border-color:var(--bs-secondary);
-    font-family: var(--font);
-    font-size: var(--font-size-text);
-}
-
-.champ-address:focus {
-    outline-style: ridge;
-}
-
-.label-address {
-    font-family: var(--font);
-    font-size: calc(var(--font-size-text) + 2px);
-}
-
-button, button::after {
-    width: 7rem;
-    height: 4rem;
-    font-size: var(--font-size);
-    font-family:var(--font-title);
-    background-color:var(--bs-primary); 
-    border-color: var(--bs-secondary);
-    border-radius: 10px;
-    color: var(--bs-light);
-    line-height: 88px;
-    outline: transparent;
-    position: relative;
-  }
-  
-  button::after {
-    --slice-0: inset(50% 50% 50% 50%);
-    --slice-1: inset(80% -6px 0 0);
-    --slice-2: inset(50% -6px 30% 0);
-    --slice-3: inset(10% -6px 85% 0);
-    --slice-4: inset(40% -6px 43% 0);
-    --slice-5: inset(80% -6px 5% 0);
-    
-    content: 'AVAILABLE NOW';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
-    text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
-    clip-path: var(--slice-0);
-  }
-  
-  button:hover::after {
-    animation: 1s glitch;
-    animation-timing-function: steps(2, end);
-  }
-  
-  @keyframes glitch {
-    0% {
-      clip-path: var(--slice-1);
-      transform: translate(-20px, -10px);
-    }
-    10% {
-      clip-path: var(--slice-3);
-      transform: translate(10px, 10px);
-    }
-    20% {
-      clip-path: var(--slice-1);
-      transform: translate(-10px, 10px);
-    }
-    30% {
-      clip-path: var(--slice-3);
-      transform: translate(0px, 5px);
-    }
-    40% {
-      clip-path: var(--slice-2);
-      transform: translate(-5px, 0px);
-    }
-    50% {
-      clip-path: var(--slice-3);
-      transform: translate(5px, 0px);
-    }
-    60% {
-      clip-path: var(--slice-4);
-      transform: translate(5px, 10px);
-    }
-    70% {
-      clip-path: var(--slice-2);
-      transform: translate(-10px, 10px);
-    }
-    80% {
-      clip-path: var(--slice-5);
-      transform: translate(20px, -10px);
-    }
-    90% {
-      clip-path: var(--slice-1);
-      transform: translate(-10px, 0px);
-    }
-    100% {
-      clip-path: var(--slice-1);
-      transform: translate(0);
-    }
-  }
