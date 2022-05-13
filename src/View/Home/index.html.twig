@@ -17,11 +17,18 @@
 				<form action="" method="post">
 					<label for="url" class="form-label">Url du site web que vous allez combattre</label>
 					<input type="url" name="url" id="url" class="form-control" placeholder="https://example.com">
-					<button class="btn btn-primary mt-3">Attaquer !</button>
+					<button 
+					class="btn w-100 btn-primary mt-3" id="btn">Téléportation !</button>
 				</form>
 			</div>
 		</section>
 		<div class="fs-6 w-fit ms-auto">API utilisée: https://api.websitecarbon.com/</div>
 		</div>
 	</main>
+	<script> const button = document.getElementById("btn");
+				button.addEventListener('click', (event) => {
+					button.disabled = true;
+					button.innerHTML = 'Retour vers le passé... <span class=\"spinner-border mx-2 spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>';
+				});
+	</script>
 {% endblock %}
