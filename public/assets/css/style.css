@@ -70,3 +70,16 @@ src: url('../images/Erika Ormig.ttf');
 .btn:hover {
      color: var(--bs-secondary);
 }
+
+.banner {
+    background-image: url("../images/bannerdata.jpg");
+    height:100vh;
+    filter: drop-shadow(0 0px 1px rgb(252, 251, 252));
+}
+
+.bannertitle {
+  font-size: var(--font-size-title);
+  color: var(--bs-light);
+  font-family: var(--font);
+  filter: drop-shadow(0 0px 1px rgb(252, 251, 252));
+}
