@@ -11,8 +11,3 @@
 .link:hover {
     color: var(--bs-secondary);
 }
-
-.icon-nav {
-    width: 4rem;
-    height: 4rem;
-}
