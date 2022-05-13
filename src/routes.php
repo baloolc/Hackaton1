@@ -9,5 +9,5 @@
 return [
     '' => ['HomeController', 'article',],
     'webinator' => ['HomeController', 'index',],
-    'game' => ['GameController', 'index',],
+    'game' => ['GameController', 'index', ['webPower', 'name']],
 ];
