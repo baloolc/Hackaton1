@@ -34,4 +34,9 @@ class HomeController extends AbstractController
 
         return $this->twig->render('Home/index.html.twig');
     }
+
+    public function article()
+    {
+        return $this->twig->render('Home/article.html.twig');
+    }
 }
