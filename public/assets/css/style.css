@@ -60,3 +60,13 @@ src: url('../images/Erika Ormig.ttf');
   font-size: var(--font-size-text);
   font-family: var(--font);
 }
+
+.btn {
+  font-size: var(--font-size-text);
+  font-family: var(--font);
+  color: var(--bs-light);
+}
+
+.btn:hover {
+     color: var(--bs-secondary);
+}
