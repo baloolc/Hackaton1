@@ -14,12 +14,14 @@ export default class EnemyController {
   fireBulletTimer = this.fireBulletTimerDefault;
   health = 1;
   isBoss = false;
+  score = 0;
 
-  constructor(canvas, enemyBulletController, playerBulletController, enemyMap, health) {
+  constructor(canvas, enemyBulletController, playerBulletController, enemyMap, health, pointsOnKill) {
     this.canvas = canvas;
     this.enemyBulletController = enemyBulletController;
     this.playerBulletController = playerBulletController;
     this.enemyMap = enemyMap;
+    this.pointsOnKill = pointsOnKill;
     this.health = health;
     if (this.health > 1) {
       this.isBoss = true;
@@ -56,6 +58,7 @@ export default class EnemyController {
         if (this.playerBulletController.collideWith(enemy)) {
           if (this.health === 1) {
             enemyRow.splice(enemyIndex, 1);
+            this.score += this.pointsOnKill
           } else {
             this.health--;
           }

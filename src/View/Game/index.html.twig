@@ -28,7 +28,7 @@
 
 			const playerBulletController = new BulletController(canvas, 10, "green");
 			let enemyBulletController = new BulletController(canvas, 4, "white");
-			let enemyController = new EnemyController(canvas, enemyBulletController, playerBulletController, enemyMap, 1);
+			let enemyController = new EnemyController(canvas, enemyBulletController, playerBulletController, enemyMap, 1, 1);
 			const player = new Player(canvas, 3, playerBulletController);
 			let isGameOver = false;
 			let didWin = false;
@@ -36,6 +36,7 @@
 
 			function game() {
 			checkGameOver();
+			console.log(enemyController.score);
 			ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 			displayGameOver();
 				if (!isGameOver) {
@@ -78,7 +79,7 @@
 						stageTwo = true;
 						enemyMap = [[5]];
 						enemyBulletController = new BulletController(canvas, 6, "white");
-						enemyController = new EnemyController(canvas, enemyBulletController, playerBulletController, enemyMap, 20);
+						enemyController = new EnemyController(canvas, enemyBulletController, playerBulletController, enemyMap, 20, 2); //a changer via twig en fonction de l'API
 					} else {
 						didWin = true;
 						isGameOver = true;
