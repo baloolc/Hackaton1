@@ -13,6 +13,7 @@ export default class EnemyController {
   fireBulletTimerDefault = 100;
   fireBulletTimer = this.fireBulletTimerDefault;
   health = 1;
+  isBoss = false;
 
   constructor(canvas, enemyBulletController, playerBulletController, enemyMap, health) {
     this.canvas = canvas;
@@ -20,11 +21,20 @@ export default class EnemyController {
     this.playerBulletController = playerBulletController;
     this.enemyMap = enemyMap;
     this.health = health;
-    this.isBoss();
+    if (this.health > 1) {
+      this.isBoss = true;
+      this.setBoss();
+    }
     this.createEnemies();
   }
 
   draw(ctx) {
+    if (this.isBoss) {
+      ctx.fillStyle = 'red';
+      ctx.font = '25px Arial';
+      const text = 'Vie du boss : ' + this.health;
+      ctx.fillText(text, 5, 30);
+    }
     this.decrementMoveDownTimer();
     this.updateVelocityAndDirection();
     this.collisionDetection();
@@ -33,13 +43,11 @@ export default class EnemyController {
     this.fireBullet();
   }
 
-  isBoss() {
-    if (this.health > 1) {
-      this.defaultXVelocity = 3;
-      this.defaultYVelocity = 3;
-      this.fireBulletTimerDefault = 50;
-      this.fireBulletTimer = this.fireBulletTimerDefault;
-    }
+  setBoss() {
+    this.defaultXVelocity = 3;
+    this.defaultYVelocity = 4;
+    this.fireBulletTimerDefault = 50;
+    this.fireBulletTimer = this.fireBulletTimerDefault;
   }
 
   collisionDetection() {
