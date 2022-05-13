@@ -1,9 +1,20 @@
 export default class Enemy {
-  constructor(x, y, imageNumber) {
+  constructor(x, y, imageNumber, pointsOnKill) {
     this.x = x;
     this.y = y;
     this.width = 44;
     this.height = 44; // Peut etre a changer
+    if (pointsOnKill > 20) {
+      this.pointsOnKill = pointsOnKill;
+    } else if (imageNumber === 1) {
+      this.pointsOnKill = 5;
+    } else if (imageNumber === 2) {
+      this.pointsOnKill = 20;
+    } else if (imageNumber === 3) {
+      this.pointsOnKill = 20;
+    } else if (imageNumber === 4) {
+      this.pointsOnKill = 20;
+    }
 
     this.image = new Image();
     this.image.src = `/assets/images/enemy${imageNumber}.png`;
