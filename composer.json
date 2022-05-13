@@ -11,7 +11,8 @@
     "require": {
         "twig/twig": "^3.1",
         "ext-pdo": "*",
-        "filp/whoops": "^2.14"
+        "filp/whoops": "^2.14",
+        "symfony/http-client": "^6.0"
     },
     "autoload": {
         "psr-4": {

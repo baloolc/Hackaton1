@@ -2,33 +2,36 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpClient\HttpClient;
+
 class HomeController extends AbstractController
 {
+    public const API_URL = 'https://api.websitecarbon.com/';
     /**
      * Display home page
      */
     public function index(): string
     {
-        return $this->twig->render('Home/index.html.twig');
-    }
-
-    public function validate()
-    {
-        $contact = [];
         $errors = [];
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $contact = array_map("trim", $_POST);
-
-            if (empty($contact["url"])) {
-                $errors[] = "L'url est obligatoire";
-            }
-            if (!filter_var($contact['url'], FILTER_VALIDATE_URL)) {
-                $errors[] = "Mauvais format pour l'url ";
+            $url = trim($_POST['url']);
+            if (empty($url)) {
+                $errors[] = 'L\'url est obligatoire';
+            } elseif (!filter_var($url, FILTER_VALIDATE_URL)) {
+                $errors[] = "Mauvais format pour l'url";
             }
             if (empty($errors)) {
-                header('Location: /index.html.twig');
+                $url = str_replace(':', '%3A', $url);
+                $url = str_replace('/', '%2F', $url);
+                $client = HttpClient::create();
+                $response = $client->request('GET', self::API_URL . 'site?url=' . $url, [
+                    'timeout' => 15,
+                ]);
+                $content = $response->toArray();
+                header('Location: /game?webPower=' . $content['statistics']['co2']['grid']['grams']);
             }
         }
-        return $this->twig->render('Home/index.html.twig', ['errors' => $errors, 'contact' => $contact]);
+
+        return $this->twig->render('Home/index.html.twig');
     }
 }
