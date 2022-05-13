@@ -1,13 +1,6 @@
 import Enemy from "/assets/js/Enemy.js";
 import MovingDirection from "/assets/js/MovingDirection.js";
 export default class EnemyController {
-  enemyMap = [
-    [1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  ];
-
   enemyRows = [];
 
   currentDirection = MovingDirection.right;
@@ -19,12 +12,15 @@ export default class EnemyController {
   moveDownTimer = this.moveDownTimerDefault;
   fireBulletTimerDefault = 100;
   fireBulletTimer = this.fireBulletTimerDefault;
+  health = 1;
 
-  constructor(canvas, enemyBulletController, playerBulletController) {
+  constructor(canvas, enemyBulletController, playerBulletController, enemyMap, health) {
     this.canvas = canvas;
     this.enemyBulletController = enemyBulletController;
     this.playerBulletController = playerBulletController;
-
+    this.enemyMap = enemyMap;
+    this.health = health;
+    this.isBoss();
     this.createEnemies();
   }
 
@@ -37,11 +33,24 @@ export default class EnemyController {
     this.fireBullet();
   }
 
+  isBoss() {
+    if (this.health > 1) {
+      this.defaultXVelocity = 3;
+      this.defaultYVelocity = 3;
+      this.fireBulletTimerDefault = 50;
+      this.fireBulletTimer = this.fireBulletTimerDefault;
+    }
+  }
+
   collisionDetection() {
     this.enemyRows.forEach((enemyRow) => {
       enemyRow.forEach((enemy, enemyIndex) => {
         if (this.playerBulletController.collideWith(enemy)) {
-          enemyRow.splice(enemyIndex, 1);
+          if (this.health === 1) {
+            enemyRow.splice(enemyIndex, 1);
+          } else {
+            this.health--;
+          }
         }
       });
     });

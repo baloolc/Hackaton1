@@ -19,18 +19,26 @@
 			const background = new Image();
 			background.src = "/assets/images/bg-game.jpeg";
 
+			let enemyMap = [
+				[1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1],
+				[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+				[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+				[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			];
+
 			const playerBulletController = new BulletController(canvas, 10, "green");
-			const enemyBulletController = new BulletController(canvas, 4, "white");
-			const enemyController = new EnemyController(canvas, enemyBulletController, playerBulletController);
+			let enemyBulletController = new BulletController(canvas, 4, "white");
+			let enemyController = new EnemyController(canvas, enemyBulletController, playerBulletController, enemyMap, 1);
 			const player = new Player(canvas, 3, playerBulletController);
 			let isGameOver = false;
 			let didWin = false;
+			let stageTwo = false;
 
 			function game() {
 			checkGameOver();
 			ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 			displayGameOver();
-				if (! isGameOver) {
+				if (!isGameOver) {
 					enemyController.draw(ctx);
 					player.draw(ctx);
 					playerBulletController.draw(ctx);
@@ -66,8 +74,16 @@
 				}
 
 				if (enemyController.enemyRows.length === 0) {
-					didWin = true;
-					isGameOver = true;
+					if (!stageTwo) {
+						stageTwo = true;
+						enemyMap = [[5]];
+						enemyBulletController = new BulletController(canvas, 6, "white");
+						enemyController = new EnemyController(canvas, enemyBulletController, playerBulletController, enemyMap, 20);
+					} else {
+						didWin = true;
+						isGameOver = true;
+					}
+					
 				}
 			}
 
