@@ -35,11 +35,11 @@
 				let isGameOver = false;
 				let didWin = false;
 				let stageTwo = false;
+				let stageOneScore = 0;
 
 				function game() {
 				checkGameOver();
 				ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-				showGameInfo();
 				displayGameOver();
 					if (!isGameOver) {
 						enemyController.draw(ctx);
@@ -47,6 +47,7 @@
 						playerBulletController.draw(ctx);
 						enemyBulletController.draw(ctx);
 					}
+				showGameInfo();
 				}
 
 				function showGameInfo() {
@@ -54,12 +55,18 @@
 						gameInfo.innerHTML = `<h3 class="w-fit mx-auto">Niveau 1</h3> 
 						<h5>Score: ${enemyController.score}</h5>
 						<p>Détruisez tous les sites pour atteindre le prochain niveau</p>`;
-					} else {
+					} else if (!isGameOver) {
 						gameInfo.innerHTML = `<h3 class="w-fit mx-auto">Niveau 2</h3> 
-						<h5>Score: ${enemyController.score}</h5>
+						<h5>Score: ${enemyController.score + stageOneScore}</h5>
 						<p>Boss: {{ name }} | Impact écologique: {{ webPower }} gram de CO2/requête</p>
 						<label for="file">Vie: </label>
 						<progress id="file" value="${enemyController.health}" max="{{ webPower * 100 }}"></progress>`;
+					} else {
+						gameInfo.innerHTML = `<h3 class="w-fit mx-auto">Niveau 2</h3> 
+						<h5>Score: ${enemyController.score + stageOneScore}</h5>
+						<p>Boss: {{ name }} | Impact écologique: {{ webPower }} gram de CO2/requête</p>
+						<label for="file">Vie: </label>
+						<progress id="file" value="0" max="{{ webPower * 100 }}"></progress>`;
 					}
 				}
 
@@ -94,6 +101,7 @@
 						if (!stageTwo) {
 							stageTwo = true;
 							enemyMap = [[5]];
+							stageOneScore = enemyController.score;
 							enemyBulletController = new BulletController(canvas, 6, "white");
 							enemyController = new EnemyController(canvas, enemyBulletController, playerBulletController, enemyMap, {{ webPower * 100 }}, {{ webPower * 1000}}); //a changer via twig en fonction de l'API
 						} else {
