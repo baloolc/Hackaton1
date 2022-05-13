@@ -7,8 +7,15 @@ class GameController extends AbstractController
     /**
      * Display home page
      */
-    public function index(): string
+    public function index(string $webPower= '', string $name = ''): string
     {
-        return $this->twig->render('Game/index.html.twig');
+        $webPower = trim($webPower);
+        $name = trim($name);
+
+        $webPower = number_format($webPower, 2);
+        return $this->twig->render('Game/index.html.twig', [
+            'webPower' => $webPower,
+            'name' =>$name,
+        ]);
     }
 }

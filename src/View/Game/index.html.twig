@@ -2,9 +2,9 @@
 
 {% block content %}
 	<main class="main-game">
-		<section class="webinator py-5 rounded-3">
-			<h1 class="w-fit mx-auto">Webinator</h1>
-			<div class="w-fit article mx-auto pt-5">
+		<section class="webinator py-4 rounded-3">
+			<h1 class="w-fit mx-auto">À vous de jouer</h1>
+			<div class="w-fit article mx-auto pt-4">
 			<div class="w-100 article mx-auto px-3 py-1 bg-light border rounded-3 mb-3" id="game-info">
 			</div>
 				<canvas id="game" class="rounded-3"></canvas>
@@ -37,8 +37,8 @@
 
 				function game() {
 				checkGameOver();
-				showGameInfo();
 				ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+				showGameInfo();
 				displayGameOver();
 					if (!isGameOver) {
 						enemyController.draw(ctx);
@@ -52,12 +52,13 @@
 					if (!stageTwo) {
 						gameInfo.innerHTML = `<h3 class="w-fit mx-auto">Niveau 1</h3> 
 						<h5>Score: ${enemyController.score}</h5>
-						<p>Détruisez tous les sites pour le prochain niveau</p>`;
+						<p>Détruisez tous les sites pour atteindre le prochain niveau</p>`;
 					} else {
 						gameInfo.innerHTML = `<h3 class="w-fit mx-auto">Niveau 2</h3> 
 						<h5>Score: ${enemyController.score}</h5>
-						<label for="file">Boss:</label><br>
-						<progress id="file" value="${enemyController.health}" max="20"></progress>`;
+						<p>Boss: {{ name }} | Impact écologique: {{ webPower }} gram de CO2/requête</p>
+						<label for="file">Vie: </label>
+						<progress id="file" value="${enemyController.health}" max="{{ webPower * 100 }}"></progress>`;
 					}
 				}
 
@@ -93,7 +94,7 @@
 							stageTwo = true;
 							enemyMap = [[5]];
 							enemyBulletController = new BulletController(canvas, 6, "white");
-							enemyController = new EnemyController(canvas, enemyBulletController, playerBulletController, enemyMap, 20, 2); //a changer via twig en fonction de l'API
+							enemyController = new EnemyController(canvas, enemyBulletController, playerBulletController, enemyMap, {{ webPower * 100 }}, {{ webPower * 1000}}); //a changer via twig en fonction de l'API
 						} else {
 							didWin = true;
 							isGameOver = true;

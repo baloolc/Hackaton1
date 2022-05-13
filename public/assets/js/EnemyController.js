@@ -31,12 +31,6 @@ export default class EnemyController {
   }
 
   draw(ctx) {
-    if (this.isBoss) {
-      ctx.fillStyle = 'red';
-      ctx.font = '25px Arial';
-      const text = 'Vie du boss : ' + this.health;
-      ctx.fillText(text, 5, 30);
-    }
     this.decrementMoveDownTimer();
     this.updateVelocityAndDirection();
     this.collisionDetection();
@@ -47,8 +41,8 @@ export default class EnemyController {
 
   setBoss() {
     this.defaultXVelocity = 3;
-    this.defaultYVelocity = 4;
-    this.fireBulletTimerDefault = 50;
+    this.defaultYVelocity = 3;
+    this.fireBulletTimerDefault = 70;
     this.fireBulletTimer = this.fireBulletTimerDefault;
   }
 

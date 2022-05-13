@@ -21,6 +21,7 @@ class HomeController extends AbstractController
                 $errors[] = "Mauvais format pour l'url";
             }
             if (empty($errors)) {
+                $name = $url;
                 $url = str_replace(':', '%3A', $url);
                 $url = str_replace('/', '%2F', $url);
                 $client = HttpClient::create();
@@ -28,7 +29,7 @@ class HomeController extends AbstractController
                     'timeout' => 60,
                 ]);
                 $content = $response->toArray();
-                header('Location: /game?webPower=' . $content['statistics']['co2']['grid']['grams']);
+                header('Location: /game?webPower=' . $content['statistics']['co2']['grid']['grams'] . '&name=' . $name . '#game');
             }
         }
 
