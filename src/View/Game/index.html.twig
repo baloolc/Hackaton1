@@ -4,12 +4,17 @@
 	<main class="py-5 rounded-3">
 		<h1 class="w-fit mx-auto">Webinator</h1>
 		<div class="w-fit mx-auto pt-5">
+		<div class="w-100 mx-auto px-3 py-1 bg-light border rounded-3 mb-3" id="game-info">
+			<h3 class="w-fit mx-auto">Niveau 1</h3>
+			<h5>Score: 343</h5>
+		</div>
 			<canvas id="game" class="rounded-3"></canvas>
 		</div>
 		<script type="module">
 			import EnemyController from "/assets/js/EnemyController.js";
 			import Player from "/assets/js/Player.js";
 			import BulletController from "/assets/js/BulletController.js";
+			const gameInfo = document.getElementById("game-info");
 			const canvas = document.getElementById("game");
 			const ctx = canvas.getContext("2d");
 
@@ -21,9 +26,6 @@
 
 			let enemyMap = [
 				[1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1],
-				[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-				[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-				[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 			];
 
 			const playerBulletController = new BulletController(canvas, 10, "green");
@@ -36,6 +38,7 @@
 
 			function game() {
 			checkGameOver();
+			showGameInfo();
 			ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 			displayGameOver();
 				if (!isGameOver) {
@@ -43,6 +46,19 @@
 					player.draw(ctx);
 					playerBulletController.draw(ctx);
 					enemyBulletController.draw(ctx);
+				}
+			}
+
+			function showGameInfo() {
+				if (!stageTwo) {
+					gameInfo.innerHTML = `<h3 class="w-fit mx-auto">Niveau 1</h3> 
+					<h5>Score: ${enemyController.score}</h5>
+					<p>Détruisez tous les sites pour le prochain niveau</p>`;
+				} else {
+					gameInfo.innerHTML = `<h3 class="w-fit mx-auto">Niveau 2</h3> 
+					<h5>Score: ${enemyController.score}</h5>
+					<label for="file">Boss:</label><br>
+					<progress id="file" value="${enemyController.health}" max="20"></progress>`;
 				}
 			}
 
