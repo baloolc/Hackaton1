@@ -40,23 +40,16 @@ src: url('../images/Erika Ormig.ttf');
   background-color: rgba(255, 255, 255, 0.9);
 }
 
+.level {
+  font-size: calc(var(--font-size-text) * 1.2);
+  font-family: var(--font);
+}
+
 .w-fit {
   width: fit-content;
-  font-size: var(--font-size-title);
-  font-family: var(--font-title);
 }
 
 .article {
-  font-size: var(--font-size-text);
-  font-family: var(--font);
-}
-
-.form-label {
-  font-size: var(--font-size-text);
-  font-family: var(--font);
-}
-
-.form-control {
   font-size: var(--font-size-text);
   font-family: var(--font);
 }
