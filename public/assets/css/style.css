@@ -21,12 +21,17 @@ src: url('../images/Erika Ormig.ttf');
 --font-size-text:18px;
 }
 
+h1 {
+  font-size: var(--font-size-title);
+  font-family: var(--font-title);
+}
+
 .main-game {
   min-height: 100vh;
   background-image: url("../images/bg-desert.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  line-height: var(--font-size);
+  line-height: 1.5rem;
   font-size: var(--font-size-text);
 }
 
@@ -37,6 +42,7 @@ src: url('../images/Erika Ormig.ttf');
   position: absolute;
   top: 10vh;
   left: 20vh;
+  line-height: 1.5rem;
   background-color: rgba(255, 255, 255, 0.9);
 }
 
