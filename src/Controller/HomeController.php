@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpClient\HttpClient;
+
 class HomeController extends AbstractController
 {
+    public const API_URL = 'https://api.websitecarbon.com/';
     /**
      * Display home page
      */
@@ -15,12 +18,16 @@ class HomeController extends AbstractController
             if (empty($url)) {
                 $errors[] = 'L\'url est obligatoire';
             } elseif (!filter_var($url, FILTER_VALIDATE_URL)) {
-                $errors[] = "Mauvais format pour l'url ";
+                $errors[] = "Mauvais format pour l'url";
             }
-        }
-
-        if (empty($errors)) {
-            //requet API
+            if (empty($errors)) {
+                $url = str_replace(':', '%3A', $url);
+                $url = str_replace('/', '%2F', $url);
+                $client = HttpClient::create();
+                $response = $client->request('GET', self::API_URL . 'site?url=' . $url);
+                $content = $response->toArray();
+                header('Location: /game?webPower=' . $content['statistics']['co2']['grid']['grams']);
+            }
         }
 
         return $this->twig->render('Home/index.html.twig');
